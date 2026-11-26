@@ -1,0 +1,236 @@
+.rt-delivery-page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.rt-delivery-list-panel {
+  min-width: 0;
+  padding: 0;
+  border: 1px solid #e6eaf0;
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.rt-delivery-list-table .ant-table {
+  background: transparent;
+}
+
+.rt-delivery-list-table .ant-table-container {
+  border-start-start-radius: 8px !important;
+  border-start-end-radius: 8px !important;
+}
+
+.rt-delivery-list-table .ant-table-thead > tr > th {
+  padding: 14px 18px;
+  background: #fbfcfe !important;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.rt-delivery-list-table .ant-table-tbody > tr > td {
+  padding: 16px 18px;
+  vertical-align: middle;
+}
+
+.rt-delivery-list-table .ant-table-tbody > tr:hover > td {
+  background: #f8fafc !important;
+}
+
+.rt-delivery-list-table .ant-table-cell-fix-right {
+  background: #ffffff;
+}
+
+.rt-delivery-list-table .ant-table-tbody > tr:hover > .ant-table-cell-fix-right {
+  background: #f8fafc !important;
+}
+
+.rt-delivery-list-table .ant-pagination {
+  margin: 12px 18px;
+}
+
+.rt-delivery-entity {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.rt-delivery-title-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 8px;
+}
+
+.rt-delivery-entity-title {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-delivery-code {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-delivery-tag-list {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.rt-delivery-tag-list .ant-tag {
+  max-width: 100%;
+  margin-inline-end: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-delivery-create-drawer .ant-drawer-body {
+  padding: 20px 24px 24px;
+  background: #f8fafc;
+}
+
+.rt-delivery-shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.rt-delivery-rail {
+  position: sticky;
+  top: 18px;
+  padding: 18px;
+  border: 1px solid #e6eaf0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.rt-delivery-main {
+  min-width: 0;
+}
+
+.rt-delivery-panel {
+  min-height: 460px;
+  padding: 22px;
+  border: 1px solid #e6eaf0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.rt-delivery-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.rt-delivery-section-head h4 {
+  margin: 0;
+}
+
+.rt-delivery-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+.rt-delivery-grid-wide {
+  grid-column: 1 / -1;
+}
+
+.rt-delivery-all-target {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+}
+
+.rt-delivery-channel-table .ant-select,
+.rt-delivery-channel-table .ant-input-number {
+  width: 100%;
+}
+
+.rt-delivery-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.rt-delivery-summary > div {
+  padding: 12px 14px;
+  border: 1px solid #e6eaf0;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.rt-delivery-summary span {
+  display: block;
+  margin-bottom: 4px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.rt-delivery-summary strong {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: #111827;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-delivery-alert {
+  margin-bottom: 16px;
+}
+
+.rt-delivery-payload {
+  max-height: 420px;
+  margin: 0;
+  padding: 16px;
+  overflow: auto;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.rt-delivery-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+@media (max-width: 1100px) {
+  .rt-delivery-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .rt-delivery-rail {
+    position: static;
+  }
+
+  .rt-delivery-form-grid,
+  .rt-delivery-summary {
+    grid-template-columns: 1fr;
+  }
+}

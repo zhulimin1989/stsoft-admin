@@ -1,0 +1,3 @@
+import type { EnterpriseAdminPublicStatus } from '@ruidong/shared';
+export const statusLabels:Record<EnterpriseAdminPublicStatus,string>={SUBMITTED:'已受理',PROVISIONING:'开通中',SUCCEEDED:'创建成功',FAILED_RETRYABLE:'开通失败，可核实后重试',FAILED_MANUAL:'需人工处理',VOIDING:'作废回收中',VOIDED:'已作废'};
+export const actionLabels:Record<string,string>={ACCEPTED:'创建已受理',PROVISION_STATE_CHANGED:'开通状态变更',RETRY_QUEUED:'原记录重试已排队',RECOVERY_JOB_REPAIRED:'原初次任务已恢复',RECOVERY_JOB_SETTLED:'原任务已结算',ADMISSION_REJECTED:'受理拒绝',RETRY_REJECTED:'重试拒绝',RECOVERY_REJECTED:'恢复拒绝',OUTBOX_CLAIMED:'Worker领取原任务',OUTBOX_REJECTED:'任务执行拒绝',UPLOAD_CONSUMED:'执照已关联',RECORD_READ_REJECTED:'记录读取拒绝',UNKNOWN:'未知事件'};

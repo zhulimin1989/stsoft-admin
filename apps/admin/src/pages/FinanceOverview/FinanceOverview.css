@@ -1,0 +1,56 @@
+.finance-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.finance-overview-spin {
+  display: block;
+  margin: 100px auto;
+}
+
+.finance-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.finance-overview-panel {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.finance-overview-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.finance-overview-panel-head h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.finance-overview-product-name {
+  color: #111827;
+  font-weight: 600;
+}
+
+.finance-overview-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 960px) {
+  .finance-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}

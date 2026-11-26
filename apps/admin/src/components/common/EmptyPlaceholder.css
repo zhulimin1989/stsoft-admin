@@ -1,0 +1,11 @@
+.rt-empty-ph {
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--text-muted);
+}
+.rt-empty-ph-icon { color: var(--text-muted); margin-bottom: 12px; }
+.rt-empty-ph-title { font-size: var(--fs-md); color: var(--text); font-weight: 500; }
+.rt-empty-ph-desc { font-size: var(--fs-sm); margin-top: 6px; line-height: 1.6; max-width: 480px; margin-left: auto; margin-right: auto; }
+.rt-empty-ph-todos { display: inline-block; text-align: left; margin-top: 16px; padding-left: 20px; font-size: var(--fs-sm); }
+.rt-empty-ph-todos li { padding: 4px 0; }
+.rt-empty-ph-action { margin-top: 18px; }

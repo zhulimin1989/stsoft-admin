@@ -1,0 +1,33 @@
+{
+  "name": "codesphere-admin",
+  "private": true,
+  "description": "Codesphere internal admin console and admin API.",
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "dev:api": "pnpm --filter @ruidong/api dev:admin",
+    "dev:admin": "pnpm --filter @ruidong/admin dev",
+    "prepare:api": "pnpm --filter @ruidong/api prisma:generate",
+    "prepare:shared": "pnpm --filter @ruidong/shared build",
+    "build": "pnpm prepare:api && pnpm prepare:shared && pnpm --filter @ruidong/api build && pnpm --filter @ruidong/admin build",
+    "build:api": "pnpm prepare:api && pnpm prepare:shared && pnpm --filter @ruidong/api build",
+    "build:admin": "pnpm prepare:shared && pnpm --filter @ruidong/admin build",
+    "start:api": "pnpm --filter @ruidong/api start:admin",
+    "db-boundary:check": "node scripts/check-db-boundaries.mjs",
+    "typecheck": "pnpm db-boundary:check && pnpm prepare:api && pnpm prepare:shared && pnpm --filter @ruidong/shared typecheck && pnpm --filter @ruidong/api typecheck && pnpm --filter @ruidong/admin typecheck",
+    "test": "pnpm prepare:api && pnpm prepare:shared && pnpm --filter @ruidong/api test && pnpm --filter @ruidong/admin test",
+    "test:e2e": "playwright test",
+    "db:migrate:deploy": "sh -c 'echo \"codesphere-admin does not own ruidong_console migrations; run the console DB migration from codesphere-user.\" >&2; exit 1'",
+    "db:migrate:prod": "pnpm --filter @ruidong/api prisma:migrate:prod",
+    "db:bootstrap:prod": "pnpm --filter @ruidong/api prisma:bootstrap:prod",
+    "prisma:generate": "pnpm --filter @ruidong/api prisma:generate",
+    "clean": "pnpm -r run clean"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "devDependencies": {
+    "@playwright/test": "1.60.0"
+  }
+}

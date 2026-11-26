@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "login": "Admin Login",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Sign In",
+    "loginFailed": "Login failed"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  }
+}

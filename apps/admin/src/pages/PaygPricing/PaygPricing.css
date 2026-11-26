@@ -1,0 +1,122 @@
+.payg-summary-card {
+  margin-bottom: 16px;
+}
+
+.payg-summary-label {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.payg-summary-value {
+  color: var(--text-primary);
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 30px;
+}
+
+.payg-model-cell {
+  min-width: 0;
+}
+
+.payg-model-name {
+  color: var(--text-primary);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.payg-model-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.payg-price-strip {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  max-width: 310px;
+}
+
+.payg-price-chip {
+  align-items: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  min-height: 30px;
+  padding: 4px 8px;
+}
+
+.payg-price-label {
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.payg-price-value {
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.payg-availability-cell {
+  display: grid;
+  gap: 10px;
+}
+
+.payg-switch-line {
+  align-items: center;
+  color: var(--text-muted);
+  display: inline-flex;
+  font-size: 12px;
+  gap: 6px;
+  min-height: 24px;
+  white-space: nowrap;
+}
+
+.payg-policy-cell {
+  display: grid;
+  gap: 10px;
+}
+
+.payg-multiplier-input {
+  width: 150px;
+}
+
+.payg-override-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  max-width: 390px;
+}
+
+.payg-override-field {
+  display: grid;
+  gap: 4px;
+}
+
+.payg-override-field > span {
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.payg-override-field .ant-input-group-wrapper,
+.payg-override-field .ant-input-number {
+  width: 100%;
+}
+
+.payg-version-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) minmax(180px, 1.2fr);
+  max-width: 540px;
+}
+
+.payg-version-grid .ant-picker,
+.payg-version-grid .ant-input {
+  width: 100%;
+}

@@ -1,0 +1,38 @@
+import {test,expect} from '@playwright/test';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {join} from 'node:path';
+import {randomUUID} from 'node:crypto';
+const root=process.env.EAC_BROWSER_FIXTURE_OUTPUT_ROOT;if(!root)throw Error('owned root required');
+const admin=JSON.parse(readFileSync(join(root,'admin-browser-endpoint.json'),'utf8')),user=JSON.parse(readFileSync(join(root,'user-http-endpoint.json'),'utf8')).url,bill=JSON.parse(readFileSync(join(root,'billing-http-endpoint.json'),'utf8')).url;
+const base=process.env.ADMIN_BASE_URL!,route='/api/admin/v2/enterprise-accounts/admin-creations';
+if([base,user,bill,admin.url].some(url=>new URL(url).hostname!=='127.0.0.1'))throw Error('scratch localhost only');
+async function control(host:string,path:string,body:unknown,token:string){const r=await fetch(host+path,{method:'POST',headers:{'content-type':'application/json','x-fixture-token':token},body:JSON.stringify(body)});expect(r.ok).toBe(true);return r.json() as Promise<any>;}
+const userControl=(path:string,body:unknown)=>control(user,'/_fixture'+path,body,'eac7-user-control');
+const billControl=(path:string,body:unknown)=>control(bill,'/_fixture'+path,body,'eac5-fixture-control');
+async function snapshots(userId:string){return{user:await userControl('/assets',{userId}),billing:await billControl('/personal-assets',{userId})};}
+async function prepare(page:any){
+ const phone='137'+String(10000000+Math.floor(Math.random()*89999999)),seed=await userControl('/seed',{phone,withAssets:true});
+ const funded=await billControl('/seed-personal-assets',{userId:seed.userId,tenantId:seed.personalTenantId,keyId:seed.personalKeyId});
+ const before=await snapshots(seed.userId);expect(before.billing.wallet.balanceUsd).toBe('123.456789012345');expect(before.billing.creditStates[0]).toMatchObject({quota:8765,bonus:234,version:'7'});expect(before.user.apiKeys).toHaveLength(1);expect(before.user.personalVerificationCount).toBe(0);
+ await page.goto('/enterprise-accounts-v2/admin-create');await expect(page.getByRole('textbox',{name:'企业名称'})).toBeEnabled();await page.getByRole('textbox',{name:'企业名称'}).fill('正式验收个人资产保留企业');await page.getByRole('textbox',{name:'统一社会信用代码'}).fill('91310000'+randomUUID().replace(/-/g,'').slice(0,10).toUpperCase());
+ await page.getByLabel('选择营业执照').setInputFiles({name:'license.png',mimeType:'image/png',buffer:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9ZbLIAAAAASUVORK5CYII=','base64')});await expect(page.getByText('已上传',{exact:true})).toBeVisible();await page.getByRole('textbox',{name:'客户提供的手机号'}).fill(phone);await page.getByRole('button',{name:'精确查找账号'}).click();await expect(page.getByText('该账号可作为企业 Owner',{exact:true})).toBeVisible();await page.getByRole('button',{name:'核对提交资料'}).click();
+ const response=page.waitForResponse((r:any)=>new URL(r.url()).pathname===route&&r.request().method()==='POST');await page.getByRole('button',{name:'确认并提交'}).click();const accepted=await response;expect(accepted.status()).toBe(202);const record=(await accepted.json()).data;
+ expect(await snapshots(seed.userId)).toEqual(before);const stats=await userControl('/stats',{userId:seed.userId});expect(stats.jobs).toHaveLength(1);expect(stats.jobs[0].attempts).toBe(0);expect(stats.provisionings[0].status).toBe('PENDING');
+ await page.getByRole('button',{name:'查看开通结果'}).click();await expect(page.getByText('已受理',{exact:true})).toBeVisible();return{...seed,record,before,funded};
+}
+test.beforeEach(async({context})=>{await userControl('/config',{ENTERPRISE_ADMIN_CREATION_ENABLED:'true',ADMIN_TO_USER_TOKEN:'eac5-admin-token'});await billControl('/config',{mode:null,hold:null});await context.addCookies([{name:'admin_access_token',value:admin.members.review.token,url:base,httpOnly:true,sameSite:'Lax'}]);});
+test.afterEach(async()=>{await billControl('/config',{mode:null,hold:null});});
+test('EAC20 actual browser admission and complete enterprise leave nonzero personal wallet, credits, grants, subscriptions, keys and choices identical',async({page})=>{
+ const f=await prepare(page);expect((await userControl('/process',{verificationId:f.record.verificationId})).status).toBe('SUCCEEDED');await page.getByRole('button',{name:'刷新当前状态'}).click();await expect(page.getByText('创建成功',{exact:true})).toBeVisible();
+ const after=await snapshots(f.userId);expect(after).toEqual(f.before);const resources=await billControl('/stats',{verificationId:f.record.verificationId});expect(resources.accounts).toHaveLength(1);expect(resources.accounts[0].wallet.balanceUsd).toBe('0');expect(resources.accounts[0].id).not.toBe(f.funded.accountId);expect(resources.accounts[0].members).toContainEqual({userId:f.userId,role:'owner',status:'active'});expect(resources.accounts[0].tenants).toHaveLength(1);expect(resources.accounts[0].creditConfig?.status??'DISABLED').toBe('DISABLED');
+ const purchase=await userControl('/purchase-eligibility',{userId:f.userId});expect(purchase.enterprise).toEqual({allowed:true,code:null});expect(purchase.personal.allowed).toBe(false);
+ await expect(page).toHaveURL(new RegExp(`/admin-creations/${f.record.requestId}`));const heading=page.getByRole('heading',{name:'代办记录与开通结果',exact:true});await expect(heading).toBeVisible();await heading.scrollIntoViewIfNeeded();await expect(page.getByText('创建成功',{exact:true})).toBeInViewport();await page.screenshot({path:join(root,'formal-success-heading-wide.png'),fullPage:true});
+ writeFileSync(join(root,'formal-personal-assets-success.json'),JSON.stringify({requestId:f.record.requestId,originalPersonalAccount:f.funded.accountId,enterpriseAccount:resources.accounts[0].id,before:f.before,after,purchase},null,2));
+});
+for(const mode of ['create_down','owner_down','attach_down','proof_down'])test(`EAC20 ${mode} and original retry preserve every seeded personal asset and original enterprise resources`,async({page})=>{
+ const f=await prepare(page);await billControl('/config',{mode,hold:null});expect(await userControl('/process',{verificationId:f.record.verificationId})).toMatchObject({status:'PENDING',attempts:1});expect(await snapshots(f.userId)).toEqual(f.before);
+ const failed=await userControl('/stats',{userId:f.userId});expect(failed.provisionings[0].status).toBe('FAILED_RETRYABLE');await billControl('/config',{mode:null,hold:null});await page.getByRole('button',{name:'刷新当前状态'}).click();await expect(page.getByRole('button',{name:'重试原记录'})).toBeVisible();await page.getByRole('button',{name:'重试原记录'}).click();await expect(page.getByText('操作已受理，正在核实当前开通状态',{exact:true})).toBeVisible();
+ expect(await snapshots(f.userId)).toEqual(f.before);const retried=await userControl('/stats',{userId:f.userId});expect(retried.requests).toHaveLength(1);expect(retried.jobs[0].id).toBe(failed.jobs[0].id);expect(retried.jobs[0].attempts).toBe(1);expect(retried.provisionings[0].tenantId).toBe(failed.provisionings[0].tenantId);
+ expect((await userControl('/process',{verificationId:f.record.verificationId})).status).toBe('SUCCEEDED');const after=await snapshots(f.userId);expect(after).toEqual(f.before);const completed=await userControl('/stats',{userId:f.userId});expect(completed.jobs[0].attempts).toBe(2);if(failed.provisionings[0].billingAccountId)expect(completed.provisionings[0].billingAccountId).toBe(failed.provisionings[0].billingAccountId);
+ writeFileSync(join(root,`formal-personal-assets-${mode}.json`),JSON.stringify({requestId:f.record.requestId,before:f.before,after,originalJobId:failed.jobs[0].id,completedJobId:completed.jobs[0].id,failedProvisioning:failed.provisionings[0],completedProvisioning:completed.provisionings[0],attempts:completed.jobs[0].attempts},null,2));
+});

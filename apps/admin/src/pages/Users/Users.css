@@ -1,0 +1,64 @@
+.identity-page {
+  display: grid;
+  gap: 18px;
+}
+
+.identity-cell {
+  min-width: 0;
+}
+
+.identity-primary {
+  color: var(--text);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.identity-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.identity-user-id-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.identity-user-id-label {
+  flex: none;
+  color: var(--text-muted);
+}
+
+.identity-user-id {
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
+.identity-user-id .ant-typography-copy {
+  color: var(--text-muted);
+  margin-inline-start: 4px;
+}
+
+.identity-auth {
+  display: grid;
+  gap: 4px;
+}
+
+.identity-subtext,
+.identity-modal-note {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.identity-modal-note {
+  margin-top: 12px;
+}

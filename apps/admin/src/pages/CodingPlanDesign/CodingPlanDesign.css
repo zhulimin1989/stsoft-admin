@@ -1,0 +1,84 @@
+.cp-design-workflow {
+  padding-bottom: 18px;
+}
+
+.cp-design-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cp-design-rule-grid > div {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-card);
+  background: #fff;
+}
+
+.cp-design-rule-grid span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.cp-design-rule-grid strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: var(--fs-sm);
+}
+
+.cp-design-rule-grid p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+}
+
+.cp-design-plan-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.cp-inline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cp-design-two-col {
+  display: grid;
+  grid-template-columns: minmax(430px, 0.9fr) minmax(520px, 1.1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.cp-design-single-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1180px) {
+  .cp-design-two-col,
+  .cp-design-single-col,
+  .cp-design-rule-grid {
+    grid-template-columns: 1fr;
+  }
+}

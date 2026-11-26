@@ -1,0 +1,296 @@
+.cp-resale-page {
+  --resale-accent: #0f766e;
+}
+
+.cp-resale-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.cp-resale-form {
+  padding-bottom: 16px;
+}
+
+.cp-resale-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 12px;
+}
+
+.cp-resale-config-section {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 8px;
+  background: var(--bg-elevated, #fff);
+}
+
+.cp-resale-switch-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 12px;
+}
+
+.cp-resale-switch-row-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cp-resale-dedicated-section {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 8px;
+  background: var(--bg-elevated, #fff);
+}
+
+.cp-resale-route-bindings {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.cp-resale-route-binding {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.cp-resale-route-binding-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.cp-resale-binding-line {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cp-resale-binding-line + .cp-resale-binding-line {
+  padding-top: 8px;
+  border-top: 1px solid var(--border-divider);
+}
+
+.cp-resale-section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.cp-resale-section-header strong {
+  display: block;
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.cp-resale-section-header span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+}
+
+.cp-resale-dedicated-endpoints {
+  display: grid;
+  gap: 12px;
+}
+
+.cp-resale-runtime-manager {
+  display: grid;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.cp-resale-runtime-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.cp-resale-runtime-provider-list {
+  display: grid;
+  gap: 8px;
+}
+
+.cp-resale-runtime-provider-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 8px;
+  background: var(--bg-elevated, #fff);
+}
+
+.cp-resale-runtime-provider-main {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cp-resale-runtime-provider-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.cp-resale-runtime-provider-title strong {
+  color: var(--text);
+  font-size: var(--fs-sm);
+}
+
+.cp-resale-runtime-provider-main > span {
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  overflow-wrap: anywhere;
+}
+
+.cp-resale-runtime-manager .rt-empty-ph {
+  padding: 16px;
+  border: 1px dashed var(--border-divider);
+  border-radius: 8px;
+  background: var(--bg-elevated, #fff);
+}
+
+.cp-resale-dedicated-endpoint {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.cp-resale-dedicated-endpoint-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.cp-resale-dedicated-endpoint-header span {
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.cp-resale-dedicated-required-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 12px;
+}
+
+.cp-resale-protocol-paths {
+  grid-column: span 2;
+  min-width: 0;
+}
+
+.cp-resale-protocol-paths .protocol-path-list {
+  min-width: 0;
+}
+
+.cp-line-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.cp-line-summary > span:not(.rt-tag) {
+  color: var(--text-secondary);
+  font-size: var(--fs-xs);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.cp-resale-select-empty {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  min-height: 34px;
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+}
+
+.cp-resale-publication-panel {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.cp-resale-page .ant-drawer-body {
+  background: var(--bg-panel);
+}
+
+.cp-resale-page .ant-form-item-label > label {
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 760px) {
+  .cp-resale-line-drawer .ant-drawer-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cp-resale-line-drawer .ant-drawer-header-title,
+  .cp-resale-line-drawer .ant-drawer-extra {
+    flex-basis: 100%;
+    margin-inline-start: 0;
+  }
+
+  .cp-resale-line-drawer .ant-drawer-extra > .ant-space {
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .cp-resale-form-grid,
+  .cp-resale-switch-row,
+  .cp-resale-dedicated-required-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-resale-protocol-paths {
+    grid-column: 1 / -1;
+  }
+
+  .cp-resale-publication-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cp-resale-runtime-provider-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

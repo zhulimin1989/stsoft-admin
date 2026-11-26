@@ -1,0 +1,45 @@
+@import './styles/tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-body);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 550;
+  color: var(--primary-dark);
+  margin: 0;
+}
+
+/* Linear 化:按钮无投影、克制字重 */
+.ant-btn {
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.ant-btn-primary {
+  background: var(--primary);
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus-visible {
+  background: var(--primary-hover) !important;
+}
+
+.ant-btn-default {
+  border-color: var(--border-soft);
+}

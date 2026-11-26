@@ -1,0 +1,65 @@
+.rt-prod-switcher { position: relative; }
+.rt-prod-btn {
+  background: rgba(255, 250, 242, 0.86);
+  border: 1px solid rgba(217, 138, 61, 0.24);
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  font-size: var(--fs-sm);
+  color: var(--gold-text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 1px 2px rgba(217, 138, 61, 0.08);
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+.rt-prod-btn:hover {
+  background: #fff;
+  border-color: rgba(217, 138, 61, 0.42);
+  box-shadow: 0 8px 22px rgba(217, 138, 61, 0.12);
+}
+.rt-prod-btn:disabled { cursor: not-allowed; opacity: 0.7; border-style: solid; }
+.rt-prod-dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 4px;
+  background: rgba(217, 138, 61, 0.14);
+  border: 1px solid rgba(217, 138, 61, 0.34);
+  position: relative;
+}
+.rt-prod-dot::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  left: 3px;
+  top: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--warning);
+}
+.rt-prod-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 47, 167, 0.05), 0 18px 44px rgba(0, 47, 167, 0.11);
+  min-width: 220px;
+  z-index: 100;
+  overflow: hidden;
+}
+.rt-prod-item {
+  padding: 10px 12px;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.rt-prod-item:hover { background: var(--bg-hover); }
+.rt-prod-mode {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+}

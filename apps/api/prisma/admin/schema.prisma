@@ -1,0 +1,209 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("ADMIN_DATABASE_URL")
+}
+
+model AuditLog {
+  id           String   @id @default(uuid())
+  userId       String?  @map("user_id")
+  targetUserId String?  @map("target_user_id")
+  resourceId   String?  @map("resource_id")
+  action       String
+  resource     String
+  detail       String?
+  ip           String?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@index([targetUserId])
+  @@index([createdAt])
+  @@index([action])
+  @@index([resource])
+  @@map("audit_logs")
+}
+
+model Announcement {
+  id             String   @id @default(uuid())
+  title          String
+  content        String
+  type           String   @default("info")
+  targetAudience String   @default("all") @map("target_audience")
+  isActive       Boolean  @default(true) @map("is_active")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  @@map("announcements")
+}
+
+model FeatureFlag {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       Boolean  @default(false)
+  description String   @default("")
+  scope       String   @default("global")
+  scopeValue  String?  @map("scope_value")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("feature_flags")
+}
+
+model SystemPrompt {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  name        String   @default("")
+  content     String
+  description String   @default("")
+  version     Int      @default(1)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("system_prompts")
+}
+
+model SystemConfig {
+  id          String   @id @default(uuid())
+  key         String   @unique
+  value       String   @default("{}")
+  version     BigInt   @default(0)
+  description String   @default("")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("system_configs")
+}
+
+model AdminRole {
+  id          String   @id @default(uuid())
+  key         String?  @unique
+  name        String
+  description String   @default("")
+  permissions String   @default("[]")
+  isSystem    Boolean  @default(false) @map("is_system")
+  isActive    Boolean  @default(true) @map("is_active")
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  members AdminMember[]
+
+  @@map("admin_roles")
+}
+
+model AdminMember {
+  id                 String    @id @default(uuid())
+  email              String    @unique
+  password           String
+  nickname           String
+  presetRole         String    @map("preset_role")
+  permissions        String    @default("{}")
+  isActive           Boolean   @default(true) @map("is_active")
+  invitedBy          String?   @map("invited_by")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+  roleId             String?   @map("role_id")
+  name               String    @default("")
+  phone              String?
+  department         String?
+  lastLoginAt        DateTime? @map("last_login_at")
+  passwordChangedAt  DateTime? @map("password_changed_at")
+  mustChangePassword Boolean   @default(false) @map("must_change_password")
+
+  role               AdminRole?   @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  handledAlertEvents AlertEvent[] @relation("AlertEventHandler")
+
+  @@map("admin_members")
+}
+
+model AdminActivityLog {
+  id              String   @id @default(uuid())
+  adminMemberId   String   @map("admin_member_id")
+  action          String
+  operatorAdminId String?  @map("operator_admin_id")
+  resource        String?
+  resourceId      String?  @map("resource_id")
+  requestId       String?  @map("request_id")
+  beforeState     String?  @map("before")
+  afterState      String?  @map("after")
+  ip              String?
+  userAgent       String?  @map("user_agent")
+  detail          String   @default("{}")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@index([adminMemberId])
+  @@index([action])
+  @@index([resource, resourceId])
+  @@index([requestId])
+  @@index([createdAt])
+  @@map("admin_activity_logs")
+}
+
+model Alert {
+  id            String   @id @default(uuid())
+  name          String
+  metric        String   @default("")
+  condition     String
+  threshold     Float    @default(0)
+  windowMinutes Int      @default(5) @map("window_minutes")
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@map("alerts")
+}
+
+model AlertEvent {
+  id       String             @id @default(uuid())
+  category AlertEventCategory
+  severity AlertEventSeverity
+  status   AlertEventStatus   @default(PENDING)
+
+  title   String
+  message String
+
+  sourceType String? @map("source_type")
+  sourceId   String? @map("source_id")
+  userId     String? @map("user_id")
+  context    String  @default("{}")
+
+  readAt     DateTime? @map("read_at")
+  handledAt  DateTime? @map("handled_at")
+  handledBy  String?   @map("handled_by")
+  handleNote String?   @map("handle_note")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  handler AdminMember? @relation("AlertEventHandler", fields: [handledBy], references: [id], onDelete: SetNull)
+
+  @@index([category, status, createdAt(sort: Desc)])
+  @@index([severity, status, createdAt(sort: Desc)])
+  @@index([userId, createdAt(sort: Desc)])
+  @@index([status, createdAt(sort: Desc)])
+  @@map("alert_events")
+}
+
+enum AlertEventCategory {
+  PAYMENT
+  CHANNEL
+  USAGE
+  SECURITY
+  SYSTEM
+}
+
+enum AlertEventSeverity {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum AlertEventStatus {
+  PENDING
+  READ
+  HANDLED
+}

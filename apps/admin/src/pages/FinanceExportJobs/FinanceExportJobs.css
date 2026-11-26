@@ -1,0 +1,52 @@
+.finance-export-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.finance-export-tasks-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: -6px;
+}
+
+.finance-export-tasks-search {
+  width: min(320px, 100%);
+}
+
+.finance-export-tasks-count {
+  margin-left: auto;
+}
+
+.finance-export-task-file {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.finance-export-task-id {
+  display: block;
+  max-width: 260px;
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .finance-export-tasks-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .finance-export-tasks-search {
+    width: 100%;
+  }
+
+  .finance-export-tasks-count {
+    margin-left: 0;
+  }
+}

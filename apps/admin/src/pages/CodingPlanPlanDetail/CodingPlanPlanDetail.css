@@ -1,0 +1,153 @@
+.cp-plan-detail-page {
+  padding-bottom: 72px;
+}
+
+.cp-plan-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.cp-plan-summary > div {
+  min-width: 0;
+  padding: 14px 16px;
+  border-right: 1px solid var(--border-divider);
+}
+
+.cp-plan-summary > div:last-child {
+  border-right: 0;
+}
+
+.cp-plan-summary span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.cp-plan-summary strong {
+  display: block;
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.cp-plan-tabs {
+  padding-bottom: 6px;
+}
+
+.cp-plan-tab-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.cp-plan-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1120px;
+}
+
+.cp-plan-mode-panel {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(360px, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-card);
+  background: #fff;
+}
+
+.cp-plan-mode-copy {
+  min-width: 0;
+}
+
+.cp-plan-mode-copy strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+.cp-plan-mode-copy p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+}
+
+.cp-plan-form-section {
+  padding: 16px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-card);
+  background: #fff;
+}
+
+.cp-plan-form-section + .cp-plan-form-section {
+  margin-top: 16px;
+}
+
+.cp-plan-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 0 16px;
+}
+
+.cp-plan-form-grid-4 {
+  grid-template-columns: repeat(4, minmax(160px, 1fr));
+}
+
+.cp-plan-savebar {
+  position: sticky;
+  z-index: 2;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--border-soft);
+  background: var(--bg-body);
+}
+
+@media (max-width: 1180px) {
+  .cp-plan-summary,
+  .cp-plan-mode-panel,
+  .cp-plan-form-grid,
+  .cp-plan-form-grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .cp-plan-summary,
+  .cp-plan-mode-panel,
+  .cp-plan-form-grid,
+  .cp-plan-form-grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .cp-plan-summary > div,
+  .cp-plan-summary > div:last-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-divider);
+  }
+
+  .cp-plan-summary > div:last-child {
+    border-bottom: 0;
+  }
+
+  .cp-plan-tab-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

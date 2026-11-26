@@ -1,0 +1,57 @@
+/* Linear 化列表:1px 边框、无投影、表头 11px 透明底、行高收紧 */
+.rt-table {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.rt-table-search {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 14px 0;
+}
+.rt-table-search .ant-input-affix-wrapper {
+  width: min(360px, 100%);
+}
+.rt-table .ant-table {
+  background: transparent;
+}
+.rt-table .ant-table-container {
+  border-start-start-radius: var(--radius-card) !important;
+  border-start-end-radius: var(--radius-card) !important;
+}
+.rt-table .ant-table-thead > tr > th {
+  background: transparent !important;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--border-divider);
+  padding: 10px 14px;
+}
+.rt-table .ant-table-tbody > tr > td {
+  font-size: var(--fs-sm);
+  color: var(--text);
+  border-bottom: 1px solid var(--border-divider);
+  padding: 11px 14px;
+  transition: background 0.1s ease;
+}
+.rt-table .ant-table-tbody > tr:hover > td {
+  background: var(--bg-hover) !important;
+}
+.rt-table .ant-table-tbody > tr.rt-row-selected > td {
+  background: var(--bg-active) !important;
+}
+.rt-table .ant-table-tbody > tr:last-child > td {
+  border-bottom: none;
+}
+.rt-table .ant-pagination {
+  padding: 10px 14px;
+  margin: 0;
+}
+.rt-table .ant-pagination .ant-pagination-item {
+  border-radius: 6px;
+}
+.rt-table .ant-pagination .ant-pagination-item-active {
+  border-color: var(--primary);
+}

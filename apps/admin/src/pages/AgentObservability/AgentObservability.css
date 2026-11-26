@@ -1,0 +1,130 @@
+.rt-agent-obs {
+  min-width: 0;
+}
+
+.rt-agent-obs-alert {
+  margin-bottom: 16px;
+}
+
+.rt-agent-obs-grid {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.rt-agent-obs-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rt-agent-obs-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rt-agent-obs-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-card);
+  padding: 14px;
+  min-width: 0;
+}
+
+.rt-agent-obs-panel-title {
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.rt-agent-obs-empty {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  padding: 18px 0;
+}
+
+.rt-agent-obs-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rt-agent-obs-bar-row {
+  min-width: 0;
+}
+
+.rt-agent-obs-bar-meta {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.rt-agent-obs-bar-meta span:first-child {
+  color: var(--text);
+  font-size: var(--fs-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-agent-obs-bar-meta span:last-child {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  flex: 0 0 auto;
+}
+
+.rt-agent-obs-bar-track {
+  background: var(--bg-muted);
+  border-radius: 999px;
+  height: 6px;
+  overflow: hidden;
+}
+
+.rt-agent-obs-bar-fill {
+  background: var(--primary);
+  border-radius: 999px;
+  height: 100%;
+}
+
+.rt-agent-obs-table-head {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.rt-agent-obs-table-head .rt-agent-obs-panel-title {
+  margin-bottom: 0;
+}
+
+.rt-agent-obs-muted {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
+.rt-agent-obs-project {
+  min-width: 0;
+}
+
+.rt-agent-obs-project div {
+  color: var(--text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-agent-obs-project span,
+.rt-agent-obs-code {
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: var(--fs-xs);
+}
+
+@media (max-width: 1120px) {
+  .rt-agent-obs-grid-3,
+  .rt-agent-obs-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

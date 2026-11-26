@@ -1,0 +1,27 @@
+/* Linear 化状态标签:彩色圆点 + 灰字、细边框 pill,色彩只出现在 dot 上 */
+.rt-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  line-height: 18px;
+  white-space: nowrap;
+  background: transparent;
+  color: var(--text-secondary);
+}
+.rt-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: var(--text-muted);
+}
+.rt-tag-success::before { background: var(--success); }
+.rt-tag-warn::before    { background: var(--warning); }
+.rt-tag-error::before   { background: var(--error); }
+.rt-tag-proc::before    { background: var(--info); }
+.rt-tag-muted::before   { background: var(--text-muted); }

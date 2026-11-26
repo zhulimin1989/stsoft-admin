@@ -1,0 +1,23 @@
+FROM node:22-alpine
+# 国内构建:corepack 拉 pnpm 本体、pnpm/npx 拉依赖走 npmmirror;
+# prisma 引擎二进制走 npmmirror 的 prisma binary 镜像,避开 binaries.prisma.sh 跨境慢。
+# 海外构建仍用 Dockerfile.api(默认 npmjs + 官方 prisma 引擎源)。
+ENV COREPACK_NPM_REGISTRY=https://registry.npmmirror.com \
+    npm_config_registry=https://registry.npmmirror.com \
+    PRISMA_ENGINES_MIRROR=https://registry.npmmirror.com/-/binary/prisma
+RUN corepack enable && corepack prepare pnpm@10 --activate
+WORKDIR /app
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY packages/shared/package.json packages/shared/
+COPY apps/api/package.json apps/api/
+COPY apps/admin/package.json apps/admin/
+RUN pnpm install --frozen-lockfile --prod=false
+COPY packages/shared packages/shared
+COPY apps/api apps/api
+RUN pnpm --filter @ruidong/api prisma:generate
+RUN pnpm --filter @ruidong/shared build
+RUN pnpm --filter @ruidong/api build
+WORKDIR /app/apps/api
+EXPOSE 3001
+USER node
+CMD ["node", "dist/admin-main.js"]

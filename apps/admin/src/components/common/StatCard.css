@@ -1,0 +1,45 @@
+.rt-stat-group {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+@media (max-width: 1024px) {
+  .rt-stat-group { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* Linear 化 KPI 卡:1px 边框、无投影、无图标方块 */
+.rt-stat {
+  background: transparent;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-card);
+  padding: 13px 15px 12px;
+  min-width: 0;
+}
+.rt-stat-label {
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  line-height: 1.2;
+}
+.rt-stat-value {
+  color: var(--primary-dark);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 7px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.rt-stat-value-success { color: var(--success); }
+.rt-stat-value-warning { color: var(--warning); }
+.rt-stat-value-error   { color: var(--error); }
+.rt-stat-delta {
+  font-size: var(--fs-xs);
+  margin-top: 6px;
+  color: var(--text-muted);
+}
+.rt-stat-delta-up   { color: var(--success); }
+.rt-stat-delta-down { color: var(--error); }
+
+@media (max-width: 640px) {
+  .rt-stat-group { grid-template-columns: 1fr !important; }
+}

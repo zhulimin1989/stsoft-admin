@@ -1,0 +1,133 @@
+.rt-dash-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.rt-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-card);
+  padding: 14px;
+}
+.rt-panel header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+.rt-panel header h3 { font-size: var(--fs-base); font-weight: 500; color: var(--primary-dark); margin: 0; }
+.rt-panel-sub { font-size: var(--fs-xs); color: var(--text-muted); }
+
+.rt-dashboard-alert {
+  margin: -4px 0 14px;
+}
+
+.rt-dashboard-period {
+  display: flex;
+  justify-content: flex-end;
+  margin: -4px 0 12px;
+}
+
+.rt-list-placeholder {
+  height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: var(--fs-sm);
+  background: rgba(0,47,167,0.02); border-radius: 6px;
+}
+
+.rt-dashboard-products {
+  margin-top: 0;
+}
+
+.rt-product-revenue-list {
+  display: grid;
+  gap: 10px;
+}
+
+.rt-product-revenue-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1.4fr) minmax(160px, 2fr) minmax(140px, auto);
+  align-items: center;
+  gap: 14px;
+  padding: 11px 0;
+  border-top: 1px solid var(--border-divider);
+  min-width: 0;
+}
+
+.rt-product-revenue-row:first-child {
+  border-top: 0;
+}
+
+.rt-product-revenue-main {
+  min-width: 0;
+}
+
+.rt-product-revenue-name {
+  color: var(--primary-dark);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-product-revenue-meta {
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rt-product-revenue-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(47, 125, 104, 0.09);
+  overflow: hidden;
+}
+
+.rt-product-revenue-bar span {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: #2F7D68;
+}
+
+.rt-product-revenue-money {
+  text-align: right;
+  color: var(--primary-dark);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.rt-product-revenue-money span {
+  display: block;
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+@media (max-width: 1024px) {
+  .rt-dash-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .rt-dashboard-period {
+    justify-content: flex-start;
+  }
+
+  .rt-product-revenue-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .rt-product-revenue-money {
+    text-align: left;
+  }
+}

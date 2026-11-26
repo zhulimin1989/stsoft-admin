@@ -1,0 +1,70 @@
+:root {
+  /* 纸色底(Raytone 纸色体系保留) + 克莱因蓝 IKB accent
+     Linear 化原则:靠 1px 边框分层而非投影、小圆角、紧凑密度 */
+  --bg-body: #F5F2EC;
+  --bg-panel: #FCFBF8;
+  --bg-sub: #F4F1EA;
+  --bg-hover: rgba(0, 47, 167, 0.045);
+  --bg-active: rgba(0, 47, 167, 0.08);
+
+  --primary: #002FA7;
+  --primary-hover: #0E3CB5;
+  --primary-dark: #0A0F1A;
+  --accent: #002FA7;
+  --accent-bg: rgba(0, 47, 167, 0.08);
+
+  --text: #2A2F3A;
+  --text-secondary: #6B7280;
+  --text-muted: #8B94A3;
+
+  --border: #C9CDD3;
+  --border-soft: #E5DFD3;
+  --border-divider: #EFEAE0;
+
+  --success: #4A9B7F;
+  --success-bg: rgba(74, 155, 127, 0.14);
+  --success-text: #2F6B53;
+
+  --warning: #D98A3D;
+  --warning-bg: rgba(217, 138, 61, 0.14);
+  --warning-text: #8A5726;
+
+  --error: #C85A54;
+  --error-bg: rgba(200, 90, 84, 0.14);
+  --error-text: #8C3F3A;
+
+  --info: #4A7FA5;
+  --info-bg: rgba(74, 127, 165, 0.16);
+  --info-text: #2D5C7E;
+
+  --muted-bg: rgba(107, 114, 128, 0.12);
+  --muted-text: #4F5867;
+
+  --gold-bg: rgba(232, 180, 100, 0.18);
+  --gold-text: #8A5726;
+
+  --radius-card: 8px;
+  --radius-modal: 10px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(20, 24, 40, 0.04);
+  --shadow-md: 0 4px 16px rgba(20, 24, 40, 0.08);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Source Han Sans SC', 'PingFang SC', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 13px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 18px;
+  --fs-2xl: 22px;
+
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  color: var(--text);
+  background: var(--bg-body);
+}
+
+body { margin: 0; }

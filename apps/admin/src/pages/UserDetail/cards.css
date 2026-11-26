@@ -1,0 +1,32 @@
+.rt-pcard {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-card);
+  padding: 14px;
+}
+.rt-pcard-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.rt-pcard-t { font-size: var(--fs-base); font-weight: 500; color: var(--primary-dark); }
+.rt-pcard-meta { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px; }
+.rt-pcard-s { font-size: var(--fs-xs); color: var(--text-muted); }
+
+.rt-quota { margin: 8px 0; }
+.rt-quota-row { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--text-secondary); margin-bottom: 4px; }
+.rt-quota-bar { height: 6px; background: rgba(0, 47, 167, 0.08); border-radius: var(--radius-pill); overflow: hidden; }
+.rt-quota-fill { height: 100%; background: var(--primary); }
+.rt-quota-fill-warn { background: var(--warning); }
+.rt-quota-fill-error { background: var(--error); }
+
+.rt-keys { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border-divider); }
+.rt-keys-h { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 8px; }
+.rt-keys-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: var(--fs-sm); }
+.rt-keys-name { font-family: var(--font-mono); color: var(--text); }
+.rt-keys-meta { font-size: var(--fs-xs); color: var(--text-muted); }
+.rt-keys-link { color: var(--primary); text-decoration: underline; cursor: pointer; }
+
+.rt-balance-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-top: 1px dashed var(--border-divider); margin-top: 8px; }
+.rt-balance-row:first-of-type { border-top: none; padding-top: 0; }
+.rt-balance-lbl { color: var(--text-secondary); font-size: var(--fs-sm); }
+.rt-balance-val { color: var(--primary-dark); font-size: var(--fs-lg); font-weight: 500; font-variant-numeric: tabular-nums; }
+.rt-balance-val-gold { color: var(--warning); }
+
+.rt-actions-row { margin-top: 12px; display: flex; gap: 6px; }

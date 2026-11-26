@@ -1,0 +1,18 @@
+.rt-timeline { margin-top: 8px; }
+.rt-timeline-item { display: flex; gap: 10px; padding: 6px 0; }
+.rt-timeline-dot {
+  width: 6px; height: 6px;
+  border-radius: var(--radius-pill);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.rt-timeline-action { font-size: var(--fs-sm); color: var(--text); }
+.rt-timeline-meta { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 2px; }
+.rt-timeline-detail { font-size: var(--fs-xs); color: var(--text-secondary); margin-top: 2px; }
+.rt-timeline-section-title {
+  margin-top: 14px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
