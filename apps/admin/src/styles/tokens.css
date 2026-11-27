@@ -1,5 +1,5 @@
 :root {
-  /* 纸色底(Raytone 纸色体系保留) + 克莱因蓝 IKB accent
+  /* 纸色底(stsoft 纸色体系保留) + 克莱因蓝 IKB accent
      Linear 化原则:靠 1px 边框分层而非投影、小圆角、紧凑密度 */
   --bg-body: #F5F2EC;
   --bg-panel: #FCFBF8;

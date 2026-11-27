@@ -249,7 +249,7 @@ function modeDescription(mode: CodingPlanFulfillmentMode): string {
   if (mode === 'provider_resale') {
     return '绑定供应商通道和已同步上游产品，用户购买后进入供应商激活队列；本地不配置模型和配额。';
   }
-  return '使用 Raytone 平台用户端可展示模型，配置模型倍率、路由策略和配额模板；上游按 API 调用计费。';
+  return '使用 stsoft 平台用户端可展示模型，配置模型倍率、路由策略和配额模板；上游按 API 调用计费。';
 }
 
 interface OverviewPanelProps {
@@ -813,7 +813,7 @@ export default function CodingPlanPlanDetailPage() {
         className="cp-alert"
         type={providerResale ? 'info' : 'success'}
         showIcon
-        message={providerResale ? '供应商转售套餐继承上游权益' : '自营模型套餐由 Raytone 本地定义权益'}
+        message={providerResale ? '供应商转售套餐继承上游权益' : '自营模型套餐由 stsoft 本地定义权益'}
         description={modeDescription(plan.fulfillmentMode)}
       />
 

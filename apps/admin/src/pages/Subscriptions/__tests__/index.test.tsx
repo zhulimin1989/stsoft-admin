@@ -27,7 +27,7 @@ vi.mock('../../../hooks/usePermission', () => ({
 const subscriptionRow = {
   id: 'sub-1',
   tenantId: 'tenant-1',
-  tenantName: 'Raytone studio',
+  tenantName: 'stsoft studio',
   tenantType: 'personal',
   tenantStatus: 'ACTIVE',
   accountId: 'acct-1',
@@ -35,8 +35,8 @@ const subscriptionRow = {
   userId: 'user-1',
   userEmail: 'shine.lee.211@gmail.com',
   userNickname: 'shine_lee_211',
-  productName: 'Raytone studio',
-  productSlug: 'raytone-studio',
+  productName: 'stsoft studio',
+  productSlug: 'stsoft-studio',
   planId: 'plan-1',
   planName: 'Pro',
   status: 'ACTIVE',
@@ -78,7 +78,7 @@ describe('SubscriptionsPage grant credits modal', () => {
     });
     mocks.grantCredits.mockResolvedValue({});
     mocks.listProducts.mockResolvedValue([
-      { id: 'product-1', name: 'Raytone studio', slug: 'raytone-studio' },
+      { id: 'product-1', name: 'stsoft studio', slug: 'stsoft-studio' },
     ]);
   });
 

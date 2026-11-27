@@ -13,7 +13,7 @@
 ### 1.1 目标
 
 1. 解决 admin 端的"乱":视觉/排版乱、单页内容堆砌乱、操作流乱、业务逻辑表达不清
-2. 接入 codesphere-frontend-saas 已有的 **Raytone Brand System V1** 设计 token,达成两端视觉统一
+2. 接入 codesphere-frontend-saas 已有的 **stsoft Brand System V1** 设计 token,达成两端视觉统一
 3. 用导航 IA 体现核心业务模型:**产品(Product) × 业务域**,支持三种 billingMode (订阅 / 配额套餐 / 按量付费)
 4. 抽出 5 个共用组件,改一处全局生效
 5. 落地 5 个样板页面 (Dashboard / Users / UserDetail / Channels / Orders),其余 16 个页面后续套样板逐步迁移
@@ -101,7 +101,7 @@ UserBalance (按量产品的预付余额)
 
 ---
 
-## 3. 设计规范映射 (Raytone V1)
+## 3. 设计规范映射 (stsoft V1)
 
 ### 3.1 来源
 
@@ -521,7 +521,7 @@ CodingPlan 卡:
 
 ### Phase 0 · 基础设施 (前置)
 
-1. 接入 Raytone V1 token (`apps/admin/src/styles/theme.ts` + AntD ConfigProvider)
+1. 接入 stsoft V1 token (`apps/admin/src/styles/theme.ts` + AntD ConfigProvider)
 2. 重写 `admin-shell.css` 为 token 版本
 3. 5 个共用组件落地 (`apps/admin/src/components/common/`):
    - PageHeader / StatCard / FilterBar / DataTable / DetailDrawer
@@ -597,7 +597,7 @@ CodingPlan 卡:
 | 权限映射 bug 导致运营被锁外 | 高 | 灰度开关,异常时降级到旧权限 key |
 | 产品筛选器引入全局状态污染 | 中 | Context 隔离,严格单元测试 |
 | 5 个样板页面改造导致回归 | 中 | feature flag 切换新旧版,逐页放量 |
-| Raytone token 与 AntD 冲突 | 低 | ConfigProvider 接管,inline style 全部清除 |
+| stsoft token 与 AntD 冲突 | 低 | ConfigProvider 接管,inline style 全部清除 |
 
 **回滚方式**: 每个 Phase 一个 feature branch,出问题整体 revert,旧路由保留。
 
@@ -605,7 +605,7 @@ CodingPlan 卡:
 
 ## 12. 参考与依赖
 
-- `codesphere-frontend-saas/src/styles/theme.ts` — Raytone V1 token 来源
+- `codesphere-frontend-saas/src/styles/theme.ts` — stsoft V1 token 来源
 - `codesphere-admin-saas/apps/admin/src/layouts/AdminLayout.tsx` — 现有壳
 - `codesphere-admin-saas/apps/admin/src/config/permissions.ts` — 现有权限定义
 - `codesphere-admin-saas/apps/api/prisma/schema.prisma` — 业务模型来源

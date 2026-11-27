@@ -132,7 +132,7 @@ export function UpstreamEntitlementTab({
         showIcon
         style={{ marginBottom: 18 }}
         message="上游权益由供应商产品继承"
-        description="供应商转售套餐只绑定一个供应商线路和一个已同步的上游产品；可用模型、Token 额度、套餐周期和上游限制来自供应商产品，不在 Raytone 本地重复配置。"
+        description="供应商转售套餐只绑定一个供应商线路和一个已同步的上游产品；可用模型、Token 额度、套餐周期和上游限制来自供应商产品，不在 stsoft 本地重复配置。"
       />
 
       <Form
@@ -216,7 +216,7 @@ export function UpstreamEntitlementTab({
               履约口径
             </Typography.Title>
             <Text type="secondary">
-              Raytone 销售价格仍在价格 Tab 配置；上游套餐权益只从供应商目录继承。
+              stsoft 销售价格仍在价格 Tab 配置；上游套餐权益只从供应商目录继承。
             </Text>
           </div>
           <Tag color={plan.providerLineId ? 'blue' : 'default'}>
@@ -263,22 +263,22 @@ export function UpstreamEntitlementTab({
             {
               key: 'partnerUserId',
               label: '激活用户 ID',
-              children: '付款成功后取 Raytone user.id，写入供应商订单 partnerUserId。',
+              children: '付款成功后取 stsoft user.id，写入供应商订单 partnerUserId。',
             },
             {
               key: 'partnerOrderNo',
               label: 'partnerOrderNo',
-              children: 'Raytone 订单号；同一订单重复请求保持幂等。',
+              children: 'stsoft 订单号；同一订单重复请求保持幂等。',
             },
             {
               key: 'keyPolicy',
               label: '上游 Key 策略',
-              children: '每个 Raytone 订单独立生成一个供应商 upstream key，仅内部托管。',
+              children: '每个 stsoft 订单独立生成一个供应商 upstream key，仅内部托管。',
             },
             {
-              key: 'raytoneKeys',
+              key: 'stsoftKeys',
               label: '用户 API Key',
-              children: '用户只创建和使用 Raytone API Key；同一 CodingPlan 订阅下允许创建多个 Raytone key。',
+              children: '用户只创建和使用 stsoft API Key；同一 CodingPlan 订阅下允许创建多个 stsoft key。',
             },
           ]}
         />

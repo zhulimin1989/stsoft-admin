@@ -1607,7 +1607,7 @@ export interface CodingPlanResalePlanRouteWriteInput {
 export interface CodingPlanWorkspace {
   generatedAt: string;
   contract: {
-    partnerUserIdSource: 'raytone_user_id';
+    partnerUserIdSource: 'stsoft_user_id';
     partnerUserIdRuntimeField: string;
     purchasedPlans: number;
     provider: string;
@@ -1616,7 +1616,7 @@ export interface CodingPlanWorkspace {
   };
   policy: {
     providerEntitlementCardinality: string;
-    raytoneApiKeyFanOut: string;
+    stsoftApiKeyFanOut: string;
     upstreamKeyExposure: string;
   };
   dataSources: Record<string, CodingPlanDataSourceState>;

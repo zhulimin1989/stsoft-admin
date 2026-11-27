@@ -36,7 +36,7 @@ barrel: `import { ... } from '@/components/common'`。
 
 ## 设计 token
 
-`src/styles/theme.ts` 镜像自 `codesphere-frontend-saas/src/styles/theme.ts`（Raytone V1）。
+`src/styles/theme.ts` 镜像自 `codesphere-frontend-saas/src/styles/theme.ts`（stsoft V1）。
 
 CSS 变量定义在 `src/styles/tokens.css`，命名规则：
 

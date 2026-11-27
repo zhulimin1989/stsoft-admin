@@ -125,7 +125,7 @@ describe('AdminService - CodingPlan workspace', () => {
         {
           id: 'plan-cp-self',
           productId: 'product-self',
-          name: 'Raytone Model Pack',
+          name: 'stsoft Model Pack',
           planType: 'coding_plan',
           monthlyCredits: 500,
           isActive: true,
@@ -227,14 +227,14 @@ describe('AdminService - CodingPlan workspace', () => {
     const workspace = await service.getCodingPlanWorkspace();
 
     expect(workspace.contract).toMatchObject({
-      partnerUserIdSource: 'raytone_user_id',
+      partnerUserIdSource: 'stsoft_user_id',
       partnerUserIdRuntimeField: 'user.id',
       purchasedPlans: 0,
       provider: 'provider_line',
     });
     expect(workspace.policy).toMatchObject({
       providerEntitlementCardinality: 'one_subscription_one_provider_coding_plan',
-      raytoneApiKeyFanOut: 'multiple_raytone_api_keys_per_subscription',
+      stsoftApiKeyFanOut: 'multiple_stsoft_api_keys_per_subscription',
       upstreamKeyExposure: 'never_exposed_to_user',
     });
     expect(workspace.products).toHaveLength(2);
@@ -417,12 +417,12 @@ describe('AdminService - CodingPlan workspace', () => {
       ],
     });
     billingClient.createOrUpdatePlan.mockResolvedValue({
-      data: { id: 'plan-self-pro', productId: 'product-cp', name: 'Raytone Pro' },
+      data: { id: 'plan-self-pro', productId: 'product-cp', name: 'stsoft Pro' },
     });
 
     const result = await service.createCodingPlanPlan({
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       fulfillmentMode: 'platform_model_package',
       isActive: true,
       monthlyCredits: 1000,
@@ -451,7 +451,7 @@ describe('AdminService - CodingPlan workspace', () => {
     expect(billingClient.createOrUpdatePlan).toHaveBeenCalledWith(
       expect.objectContaining({
         productId: 'product-cp',
-        name: 'Raytone Pro',
+        name: 'stsoft Pro',
         planType: 'coding_plan',
         monthlyCredits: 1000,
         features: [],
@@ -494,12 +494,12 @@ describe('AdminService - CodingPlan workspace', () => {
       ],
     });
     billingClient.createOrUpdatePlan.mockResolvedValue({
-      data: { id: 'plan-self-pro', productId: 'product-cp', name: 'Raytone Pro' },
+      data: { id: 'plan-self-pro', productId: 'product-cp', name: 'stsoft Pro' },
     });
 
     await service.createCodingPlanPlan({
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       fulfillmentMode: 'platform_model_package',
       isActive: true,
       platformPackage: {
@@ -518,7 +518,7 @@ describe('AdminService - CodingPlan workspace', () => {
     billingClient.getPlanById.mockResolvedValue({
       id: 'plan-self-pro',
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       isActive: true,
     });
     billingClient.listProducts.mockResolvedValue({
@@ -527,7 +527,7 @@ describe('AdminService - CodingPlan workspace', () => {
 
     await expect(service.updateCodingPlanPlan('plan-self-pro', {
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       fulfillmentMode: 'platform_model_package',
       platformPackage: { modelAccess: [], routePolicies: [], quotaTemplateIds: [] },
     })).rejects.toThrow('已上架的自营套餐不可编辑');
@@ -535,7 +535,7 @@ describe('AdminService - CodingPlan workspace', () => {
   });
 
   it('publish/unpublish 委托 billing setPlanActive(自营)', async () => {
-    billingClient.getPlanById.mockResolvedValue({ id: 'plan-self-pro', productId: 'product-cp', name: 'Raytone Pro' });
+    billingClient.getPlanById.mockResolvedValue({ id: 'plan-self-pro', productId: 'product-cp', name: 'stsoft Pro' });
     billingClient.listProducts.mockResolvedValue({
       items: [{ id: 'product-cp', name: 'CodingPlan', slug: 'coding-plan', billingMode: 'CODING_PLAN', isActive: true }],
     });
@@ -551,7 +551,7 @@ describe('AdminService - CodingPlan workspace', () => {
     billingClient.getPlanById.mockResolvedValue({
       id: 'plan-self-pro',
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       planType: 'coding_plan',
       isActive: true,
     });
@@ -579,7 +579,7 @@ describe('AdminService - CodingPlan workspace', () => {
 
     await expect(service.createCodingPlanPlan({
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       fulfillmentMode: 'platform_model_package',
       isActive: false,
       platformPackage: {
@@ -608,13 +608,13 @@ describe('AdminService - CodingPlan workspace', () => {
       .mockRejectedValueOnce(new Error('template not found'))
       .mockResolvedValueOnce({ id: 'quota-basic', isActive: true });
     billingClient.createOrUpdatePlan.mockResolvedValue({
-      data: { id: 'plan-self-pro', productId: 'product-cp', name: 'Raytone Pro' },
+      data: { id: 'plan-self-pro', productId: 'product-cp', name: 'stsoft Pro' },
     });
 
     // 第一个模板已删除（抛错按无效处理），第二个启用中 → 放行
     await expect(service.createCodingPlanPlan({
       productId: 'product-cp',
-      name: 'Raytone Pro',
+      name: 'stsoft Pro',
       fulfillmentMode: 'platform_model_package',
       isActive: true,
       platformPackage: {

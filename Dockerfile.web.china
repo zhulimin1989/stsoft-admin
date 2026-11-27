@@ -8,7 +8,7 @@ ARG VITE_USER_APP_URL
 # 海外构建仍用 Dockerfile.web(默认 npmjs)。
 ENV COREPACK_NPM_REGISTRY=https://registry.npmmirror.com \
     npm_config_registry=https://registry.npmmirror.com
-RUN corepack enable && corepack prepare pnpm@10 --activate
+RUN corepack enable && corepack prepare pnpm@12.23.0 --activate
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages/shared/package.json packages/shared/

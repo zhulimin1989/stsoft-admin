@@ -2413,7 +2413,7 @@ export default function CodingPlanResalePage() {
             <Form.Item
               label="本地权益有效天数"
               name="validityDays"
-              tooltip="用于 Raytone 本地权益过期兜底；若上游返回到期时间，以上游时间为准。"
+              tooltip="用于 stsoft 本地权益过期兜底；若上游返回到期时间，以上游时间为准。"
             >
               <StableNumberInput min={1} precision={0} style={{ width: '100%' }} />
             </Form.Item>

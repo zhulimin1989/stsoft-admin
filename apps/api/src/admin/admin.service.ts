@@ -1961,16 +1961,16 @@ export class AdminService {
     return {
       generatedAt: new Date().toISOString(),
       contract: {
-        partnerUserIdSource: 'raytone_user_id',
+        partnerUserIdSource: 'stsoft_user_id',
         partnerUserIdRuntimeField: 'user.id',
         purchasedPlans: 0,
         provider: 'provider_line',
         upstreamKeyPolicy: 'per_order_key_internal_only',
-        userKeyPolicy: 'raytone_api_keys_only',
+        userKeyPolicy: 'stsoft_api_keys_only',
       },
       policy: {
         providerEntitlementCardinality: 'one_subscription_one_provider_coding_plan',
-        raytoneApiKeyFanOut: 'multiple_raytone_api_keys_per_subscription',
+        stsoftApiKeyFanOut: 'multiple_stsoft_api_keys_per_subscription',
         upstreamKeyExposure: 'never_exposed_to_user',
       },
       dataSources: {

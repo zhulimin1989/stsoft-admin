@@ -728,7 +728,7 @@ admin 端解耦发布。
 ## 17. 与 v1 的明确变更清单
 
 **v1 落地保留(不动)**:
-- Raytone V1 设计 token + 6 共用组件
+- stsoft V1 设计 token + 6 共用组件
 - AdminLayout 240px Sider + 顶部产品筛选器
 - 5 个样板页(Dashboard / Users / UserDetail / Channels / Orders)
 - 权限映射机制 LEGACY_PERMISSION_MAP

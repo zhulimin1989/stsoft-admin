@@ -11,7 +11,7 @@
    ============================================================ */
 
 :root {
-  /* 纸色底(Raytone 原体系保留) + 克莱因蓝 accent */
+  /* 纸色底(stsoft 原体系保留) + 克莱因蓝 accent */
   --bg-app: #F5F2EC;
   --bg-panel: #FCFBF8;
   --bg-sub: #F4F1EA;
@@ -956,7 +956,7 @@ pre.code .n { color: #F2994A; }
     <div class="doc-kicker">Design Tokens</div>
     <h1 class="doc-h1">样式改造方案</h1>
     <p class="doc-lede">
-      <b>保留 Raytone 纸色体系</b>(米纸背景、暖调边框、墨色文字、柔和状态色全部不动),
+      <b>保留 stsoft 纸色体系</b>(米纸背景、暖调边框、墨色文字、柔和状态色全部不动),
       结构与密度 Linear 化:靠 1px 边框分层而非大投影、小圆角、紧凑行高。
       accent 从「深海蓝 #0E2A47 + 蜂蜜金 #E8B464」收敛为 <b>克莱因蓝 #002FA7 单色</b>,
       hover / 选中态也统一用克莱因蓝低透明度。浅色单主题,不引入深色模式。
@@ -965,7 +965,7 @@ pre.code .n { color: #F2994A; }
     <h2 class="doc-h2">色彩对照</h2>
     <div class="doc-h2-sub">纸色底与状态色保留,仅替换 accent 体系 —— tokens.css 实际改动量很小</div>
     <table class="tok">
-      <thead><tr><th>用途</th><th>现状(Raytone)</th><th></th><th>新(纸色 + 克莱因蓝)</th></tr></thead>
+      <thead><tr><th>用途</th><th>现状(stsoft)</th><th></th><th>新(纸色 + 克莱因蓝)</th></tr></thead>
       <tbody>
         <tr><td class="use">应用背景</td><td><span class="swatch"><i style="background:#F5F2EC"></i>#F5F2EC</span></td><td class="arrow-cell">=</td><td><span class="swatch"><i style="background:#F5F2EC"></i>保持不变</span></td></tr>
         <tr><td class="use">面板背景</td><td><span class="swatch"><i style="background:#FAFAF7"></i>#FAFAF7</span></td><td class="arrow-cell">→</td><td><span class="swatch"><i style="background:#FCFBF8"></i>#FCFBF8(微调更亮,与底拉开 inset 层次)</span></td></tr>
@@ -1046,7 +1046,7 @@ pre.code .n { color: #F2994A; }
     colorBgContainer: <span class="s">'#FCFBF8'</span>,    <span class="c">// 面板:原 #FAFAF7 微调更亮</span>
     colorBorder: <span class="s">'#E5DFD3'</span>,         <span class="c">// 暖调边框,原 #C9CDD3</span>
     colorBorderSecondary: <span class="s">'#EFEAE0'</span>,
-    colorText: <span class="s">'#2A2F3A'</span>,           <span class="c">// 文字保持 Raytone 原值</span>
+    colorText: <span class="s">'#2A2F3A'</span>,           <span class="c">// 文字保持 stsoft 原值</span>
     colorTextSecondary: <span class="s">'#6B7280'</span>,
     colorLink: <span class="s">'#002FA7'</span>,
     borderRadius: <span class="n">6</span>,                <span class="c">// 原 4</span>

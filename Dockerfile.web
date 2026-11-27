@@ -4,7 +4,7 @@ ARG VITE_PLATFORM_CURRENCY
 ARG VITE_BILLING_CURRENCY
 # 用户端平台地址(邀请裂变落地页默认值来源);缺省时代码 fallback 到 window.location.origin(=admin 域名,错误)
 ARG VITE_USER_APP_URL
-RUN corepack enable && corepack prepare pnpm@10 --activate
+RUN corepack enable && corepack prepare pnpm@12.23.0 --activate
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY packages/shared/package.json packages/shared/

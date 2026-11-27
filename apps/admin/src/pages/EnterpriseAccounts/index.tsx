@@ -91,7 +91,7 @@ export default function EnterpriseAccountsPage() {
   const [rechargeTarget, setRechargeTarget] = useState<EnterpriseAccount | null>(null);
   const [adjustmentTarget, setAdjustmentTarget] = useState<EnterpriseAccount | null>(null);
   // 资金操作的幂等键,跨重试保留、成功或关闭弹窗后清空。见 idempotency.ts
-  const [rechargePending, setRechargePending] = useState<PendingIdempotency>(null);
+  const [, setRechargePending] = useState<PendingIdempotency>(null);
   const rechargePendingRef = useRef<PendingIdempotency>(null);
   const rechargeGateRef = useRef(createSubmitGate());
   const [adjustmentPending, setAdjustmentPending] = useState<PendingIdempotency>(null);

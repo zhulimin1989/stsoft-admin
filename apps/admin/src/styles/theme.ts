@@ -1,6 +1,6 @@
-// Raytone Admin Theme — Linear 化改版(纸色底 + 克莱因蓝 IKB accent)
+// stsoft Admin Theme — Linear 化改版(纸色底 + 克莱因蓝 IKB accent)
 // 2026-06: 与 codesphere-frontend-saas 解除镜像,admin 独立维护。
-// C 端(saas)保持 Raytone 深海蓝体系;admin 后台走本主题,两者只共享纸色底。
+// C 端(saas)保持 stsoft 深海蓝体系;admin 后台走本主题,两者只共享纸色底。
 export const theme = {
   colors: {
     // Primary — 克莱因蓝 IKB

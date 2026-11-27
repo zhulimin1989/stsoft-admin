@@ -383,7 +383,7 @@ export default function CodingPlanDesignPage() {
             <span className="cp-muted">{price.secondary}</span>
             <span className="cp-muted">
               {row.fulfillmentMode === 'provider_resale'
-                ? 'Raytone 售价；权益继承上游产品'
+                ? 'stsoft 售价；权益继承上游产品'
                 : `${row.monthlyCredits.toLocaleString('zh-CN')} 积分/月`}
             </span>
             <span className="cp-muted">
@@ -613,7 +613,7 @@ export default function CodingPlanDesignPage() {
       <PageHeader
         title={isSelfManagedPage ? 'CodingPlan 自营套餐' : 'CodingPlan 三方套餐'}
         subtitle={isSelfManagedPage
-          ? '自营套餐由 Raytone 本地定义模型范围、积分和配额模板'
+          ? '自营套餐由 stsoft 本地定义模型范围、积分和配额模板'
           : '三方套餐绑定供应商通道和上游产品，权益继承供应商目录'}
         actions={[
           <Button key="refresh" icon={<ReloadOutlined />} onClick={fetchWorkspace} loading={loading}>
@@ -701,8 +701,8 @@ export default function CodingPlanDesignPage() {
           <div>
             <h2>设计边界</h2>
             <p>{isSelfManagedPage
-              ? '自营套餐负责 Raytone 本地售卖和本地履约，模型范围与配额都在本页闭环。'
-              : '三方套餐负责 Raytone 售卖入口和供应商履约映射，实际权益由上游产品定义。'}</p>
+              ? '自营套餐负责 stsoft 本地售卖和本地履约，模型范围与配额都在本页闭环。'
+              : '三方套餐负责 stsoft 售卖入口和供应商履约映射，实际权益由上游产品定义。'}</p>
           </div>
         </div>
         <div className="cp-design-rule-grid">

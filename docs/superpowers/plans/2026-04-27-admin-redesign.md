@@ -2,10 +2,10 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 将 codesphere-admin-saas/apps/admin 从视觉/IA/操作流混乱重构为基于 Raytone V1 设计规范的清晰运营后台,5 个样板页面落地后其余页面套样板继续迁移。
+**Goal:** 将 codesphere-admin-saas/apps/admin 从视觉/IA/操作流混乱重构为基于 stsoft V1 设计规范的清晰运营后台,5 个样板页面落地后其余页面套样板继续迁移。
 
 **Architecture:**
-- 设计 token 接入 codesphere-frontend-saas/src/styles/theme.ts (Raytone V1)
+- 设计 token 接入 codesphere-frontend-saas/src/styles/theme.ts (stsoft V1)
 - 抽 5 个共用组件 (PageHeader / StatCard / FilterBar / DataTable / DetailDrawer) 统一所有页面
 - 顶部产品筛选器 + ProductContext 全局上下文,localStorage 持久化
 - 路由表重排 + 权限点前端映射 (后端 0 改动)
@@ -24,7 +24,7 @@
 **File Structure (将创建/修改):**
 
 新建:
-- `apps/admin/src/styles/theme.ts` — Raytone V1 token (复用 saas 前端)
+- `apps/admin/src/styles/theme.ts` — stsoft V1 token (复用 saas 前端)
 - `apps/admin/src/styles/tokens.css` — CSS 变量
 - `apps/admin/src/test/setup.ts` — vitest setup
 - `apps/admin/src/components/common/PageHeader.tsx`
@@ -165,13 +165,13 @@ git commit -m "chore(admin): bootstrap vitest + React Testing Library"
 
 ---
 
-### Task 2: 接入 Raytone V1 设计 token
+### Task 2: 接入 stsoft V1 设计 token
 
 **Files:**
 - Create: `apps/admin/src/styles/theme.ts`
 - Create: `apps/admin/src/styles/tokens.css`
 
-- [ ] **Step 1: 拷贝 Raytone theme**
+- [ ] **Step 1: 拷贝 stsoft theme**
 
 从 `codesphere-frontend-saas/src/styles/theme.ts` 完整拷贝内容到 `apps/admin/src/styles/theme.ts`,保持 named export `theme` 和 `antdTheme`。
 
@@ -298,7 +298,7 @@ cd apps/admin && pnpm dev
 
 ```bash
 git add apps/admin/src/styles/ apps/admin/src/admin-shell.css apps/admin/src/app.tsx
-git commit -m "feat(admin): integrate Raytone V1 design tokens"
+git commit -m "feat(admin): integrate stsoft V1 design tokens"
 ```
 
 ---
@@ -3767,7 +3767,7 @@ git commit -m "chore(admin): regression fixes from full sweep"
 
 ## 设计 token
 
-`src/styles/theme.ts` (Raytone V1) + `src/styles/tokens.css` CSS 变量。
+`src/styles/theme.ts` (stsoft V1) + `src/styles/tokens.css` CSS 变量。
 禁止 inline style 用色,必须走 token。
 
 ## 其他页面迁移指引
@@ -3787,7 +3787,7 @@ git commit -m "chore(admin): regression fixes from full sweep"
 
 ### Changed
 - admin 端重设计 (apps/admin):
-  - 接入 Raytone V1 设计 token,与 codesphere-frontend-saas 视觉对齐
+  - 接入 stsoft V1 设计 token,与 codesphere-frontend-saas 视觉对齐
   - 抽 5 个共用组件 (PageHeader / StatCard / FilterBar / DataTable / DetailDrawer)
   - IA 重组: 27 页 → 21 页 (合并 7 处, 新增 ApiKey 管理, 删除模型权限)
   - 权限点按域重命名 (前端映射,后端不动)

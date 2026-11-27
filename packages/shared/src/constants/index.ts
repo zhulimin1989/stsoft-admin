@@ -24,4 +24,4 @@ export const RATE_LIMIT_PER_KEY = 60; // 每 Key 每分钟
 export const RATE_LIMIT_PER_USER = 100; // 每用户每分钟
 
 // 产品标识
-export const CHAT_PRODUCT_SLUG = 'raytone';
+export const CHAT_PRODUCT_SLUG = 'stsoft';

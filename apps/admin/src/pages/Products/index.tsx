@@ -1081,7 +1081,7 @@ export default function ProductsPage() {
                   type="info"
                   showIcon
                   style={{ marginBottom: 16 }}
-                  message="上游继承模式不在 Raytone 本地重复配置模型和配额"
+                  message="上游继承模式不在 stsoft 本地重复配置模型和配额"
                   description="供应商转售套餐应由上游产品目录决定可用模型、Token 额度、周期和限制。"
                 />
               )}
